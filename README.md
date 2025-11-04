@@ -2,123 +2,111 @@
 
 A real-time video analysis demo using Moondream's vision AI. Analyze your webcam feed with custom queries and detect gestures/actions in real-time.
 
-## Features
+![Moondream Live Demo](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
-- 🎥 Real-time webcam/video analysis
-- 💬 Live visual summaries with custom queries
-- 🎯 Pre-defined gesture detection (smiling, thumbs up, peace sign, etc.)
-- ⚡ Custom trigger creation for any action
-- 🎨 Modern glassmorphism UI with fullscreen support
-- 📱 Fully responsive design
+## ✨ Features
 
-## Prerequisites
+- 🎥 **Real-time webcam/video analysis** - Stream from your camera or upload a video
+- 💬 **Live visual summaries** - Continuous narration with custom prompts
+- 🎯 **Gesture detection** - Pre-defined triggers (smiling, thumbs up, peace sign, etc.)
+- ⚡ **Custom triggers** - Create your own action detectors
+- 🎨 **Modern glassmorphism UI** - Beautiful, responsive design
+- 🖥️ **Fullscreen support** - Immersive viewing experience
+- 💾 **Persistent storage** - Custom triggers saved in browser
 
-You need a Moondream API key from [moondream.ai](https://moondream.ai)
+## 🚀 Quick Start
 
-## Quick Start
+### Prerequisites
 
-### Option 1: Set API key then start server
+- Node.js 18+ installed
+- A Moondream API key from [moondream.ai](https://moondream.ai)
 
+### Installation
+
+1. **Clone the repository**
 ```bash
-export MOONDREAM_API_KEY="your_api_key_here"
-npm install
-npm run dev
+git clone https://github.com/conwayanderson/moondream-live-demo.git
+cd moondream-live-demo
 ```
 
-### Option 2: Set API key inline with server start
-
-```bash
-MOONDREAM_API_KEY="your_api_key_here" npm run dev
-```
-
-### Option 3: Using pnpm
-
-```bash
-pnpm install
-MOONDREAM_API_KEY="your_api_key_here" pnpm dev
-```
-
-The app will be available at [http://localhost:3000](http://localhost:3000)
-
-## Setup Instructions
-
-### 1. Install Dependencies
-
+2. **Install dependencies**
 ```bash
 npm install
-# or
-pnpm install
-# or
-yarn install
 ```
 
-### 2. Configure API Key
+3. **Set up your API key**
 
 Create a `.env.local` file in the root directory:
-
 ```bash
-MOONDREAM_API_KEY=your_api_key_here
+echo "MOONDREAM_API_KEY=your_api_key_here" > .env.local
 ```
 
 Or export it in your shell:
-
 ```bash
 export MOONDREAM_API_KEY="your_api_key_here"
 ```
 
-### 3. Run the Development Server
-
+4. **Run the development server**
 ```bash
 npm run dev
-# or
-pnpm dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser 🎉
 
-## How It Works
+### One-Line Setup (macOS/Linux)
+```bash
+npm install && MOONDREAM_API_KEY="your_api_key" npm run dev
+```
+
+## 🎮 How to Use
+
+### Getting Started
+
+1. Click **"Start Webcam"** to begin (or choose a video file)
+2. Grant camera permissions when prompted
+3. Watch as the AI analyzes your video in real-time!
 
 ### Query 1: Live Visual Summary
+
 - Provides continuous narration of what's happening in the video
 - Customizable prompt (default: "summarize what you see in one short sentence")
-- Updates every 2 seconds
+- Updates every ~2 seconds
 
 ### Query 2: Action Detection
+
 - Detects specific gestures or actions using trigger-based detection
-- Pre-defined triggers include:
+- **Pre-defined triggers include:**
   - 😊 Smiling
   - 👍 Thumbs up
   - 👅 Sticking tongue out
   - ✌️ Peace sign
   - 🥤 Drinking water
-- Create custom triggers for any action you want to detect
 
-### Custom Triggers
+### Creating Custom Triggers
+
 1. Click the action selector dropdown
-2. Select "+ Create Custom Trigger"
+2. Select **"+ Create Custom Trigger"**
 3. Define your trigger:
-   - **Name**: Display name for the trigger
+   - **Name**: Display name (e.g., "Waving")
    - **Detection query**: Question to ask (e.g., "is anyone waving? yes or no")
    - **Trigger text**: Text to match in response (e.g., "yes")
    - **Notification text**: Message when detected (e.g., "👋 Wave Detected!")
-4. Custom triggers are saved in your browser's local storage
+4. Custom triggers are automatically saved in your browser
 
-## Keyboard Shortcuts
+### Keyboard Shortcuts
 
-- `F` - Toggle fullscreen mode
-- `Esc` - Exit fullscreen mode
+- **F** - Toggle fullscreen mode
+- **Esc** - Exit fullscreen mode
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- **Next.js 14** - React framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **Shadcn UI** - Component library
-- **Moondream API** - Vision AI
+- **[Next.js 14](https://nextjs.org/)** - React framework with App Router
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first styling
+- **[Shadcn UI](https://ui.shadcn.com/)** - Component library
+- **[Moondream API](https://moondream.ai)** - Vision AI
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 moondream-live-demo/
@@ -128,63 +116,119 @@ moondream-live-demo/
 │   └── globals.css           # Global styles
 ├── components/
 │   ├── live-demo.tsx         # Core demo component
-│   └── ui/                   # Shadcn UI components
+│   └── ui/                   # UI components (Button, Card, Dialog, etc.)
 ├── lib/
 │   └── utils.ts              # Utility functions
 ├── public/
 │   └── md_logo.svg           # Moondream logo
-├── package.json
-└── README.md
+└── package.json
 ```
 
-## API Usage
+## ⚙️ Configuration
 
-The demo sends video frames to the Moondream API approximately every 2 seconds for Query 1 (visual summary) and Query 2 (action detection).
+### Changing Inference Interval
 
-**Estimated API usage:**
-- ~30 requests per minute per query (2 queries = ~60 requests/min)
-- Frame rate can be adjusted in the code by modifying `INFERENCE_INTERVAL_MS`
-
-## Troubleshooting
-
-### Camera Not Working
-- Check browser permissions for camera access
-- Try refreshing the page
-- Ensure no other application is using the camera
-
-### API Errors
-- Verify your API key is correct
-- Check that the API key has sufficient credits
-- Ensure the key is properly set in your environment
-
-### Performance Issues
-- Try reducing the frame resolution in the code
-- Increase the `INFERENCE_INTERVAL_MS` value
-- Close other tabs or applications
-
-## Customization
-
-### Change Inference Interval
 Edit `INFERENCE_INTERVAL_MS` in `components/live-demo.tsx`:
 ```typescript
 const INFERENCE_INTERVAL_MS = 2000; // milliseconds between inferences
 ```
 
-### Modify Styling
-The UI uses Tailwind CSS classes and inline styles with glassmorphism effects. Adjust the styling in the component files.
+### Modifying Pre-defined Triggers
 
-### Add More Pre-defined Triggers
-Edit the `PRE_DEFINED_TRIGGERS` array in `components/live-demo.tsx`.
+Edit the `PRE_DEFINED_TRIGGERS` array in `components/live-demo.tsx`:
+```typescript
+const PRE_DEFINED_TRIGGERS: Trigger[] = [
+  {
+    id: 'your-trigger',
+    name: 'Your Trigger Name',
+    query: 'your detection query? yes or no',
+    triggerText: 'yes',
+    notificationText: '🎯 Your Notification!',
+  },
+  // ... more triggers
+];
+```
 
-## License
+### Customizing Styles
+
+The UI uses Tailwind CSS classes and glassmorphism effects. Modify styling in:
+- `app/globals.css` - Global styles
+- `components/live-demo.tsx` - Component-specific styles
+- `tailwind.config.ts` - Theme configuration
+
+## 🔧 Troubleshooting
+
+### Camera Not Working
+
+- Check browser permissions for camera access
+- Ensure no other application is using the camera
+- Try refreshing the page
+- Use Chrome/Edge for best compatibility
+
+### API Errors
+
+- Verify your API key is correct
+- Check that the key has sufficient credits at [moondream.ai](https://moondream.ai)
+- Ensure the API key is properly set in `.env.local` or environment variables
+
+### Build Errors
+
+If you encounter build issues:
+```bash
+# Clear cache and reinstall
+rm -rf node_modules .next
+npm cache clean --force
+npm install
+```
+
+### Performance Issues
+
+- Try reducing the frame resolution in the code
+- Increase the `INFERENCE_INTERVAL_MS` value to reduce API calls
+- Close other tabs or applications
+
+## 📊 API Usage
+
+The demo sends video frames to the Moondream API approximately every 2 seconds for both queries.
+
+**Estimated API usage:**
+- ~30 requests per minute per query
+- 2 queries = ~60 requests/min total
+- Frame rate can be adjusted by modifying `INFERENCE_INTERVAL_MS`
+
+## 🚢 Deployment
+
+### Deploy to Vercel
+
+The easiest way to deploy is using [Vercel](https://vercel.com):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/conwayanderson/moondream-live-demo)
+
+1. Click the button above or connect your GitHub repo to Vercel
+2. Add your `MOONDREAM_API_KEY` in the Environment Variables section
+3. Deploy!
+
+### Environment Variables
+
+Make sure to set these in your deployment platform:
+```
+MOONDREAM_API_KEY=your_api_key_here
+```
+
+## 📜 License
 
 MIT License - feel free to use this code for your own projects!
 
-## Support
+## 💡 Support
 
-For API support and questions, visit [moondream.ai](https://moondream.ai)
+- **API Support**: Visit [moondream.ai](https://moondream.ai)
+- **Issues**: Open an issue on [GitHub](https://github.com/conwayanderson/moondream-live-demo/issues)
+- **Questions**: Check existing issues or create a new one
 
-## Credits
+## 🙏 Credits
 
-Built with ❤️ using Moondream Vision AI
+Built with ❤️ using [Moondream Vision AI](https://moondream.ai)
 
+---
+
+**Ready to start?** Follow the [Quick Start](#-quick-start) section above!
