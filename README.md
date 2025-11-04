@@ -2,8 +2,6 @@
 
 A real-time video analysis demo using Moondream's vision AI. Analyze your webcam feed with custom queries and detect gestures/actions in real-time.
 
-![Moondream Live Demo](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript) ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
-
 ## ✨ Features
 
 - 🎥 **Real-time webcam/video analysis** - Stream from your camera or upload a video
